@@ -16,7 +16,7 @@ pipeline {
         }
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                sh 'ls /var/jenkins_home/tools/org.jenkinsci.plugins.DependencyCheck.tools.DependencyCheckInstallation/OWASP_Dependency-Check_Vulnerabilities/bin/'
+                sh 'ls'
                 dependencyCheck additionalArguments: ''' 
                             -o './'
                             -s './'
