@@ -14,12 +14,11 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('OWASP DependencyCheck') {
+        stage('OWASP Dependency-Check Vulnerabilities') {
 			steps {
 				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
 			}
 		}
-  
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
