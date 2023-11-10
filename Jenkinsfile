@@ -16,7 +16,7 @@ pipeline {
         }
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                sh 'ls /var'
+                sh 'ls /var/jenkins_home/tools/'
                 dependencyCheck additionalArguments: ''' 
                             -o './'
                             -s './'
