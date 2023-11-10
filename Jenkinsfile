@@ -14,9 +14,14 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('OWASP DependencyCheck') {
+			steps {
+				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
+			}
+		}
+  
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                sh 'ls /var/jenkins_home/workspace'
                 dependencyCheck additionalArguments: ''' 
                             -o './'
                             -s './'
@@ -39,4 +44,9 @@ pipeline {
             }
         }
     }
+          post {
+            success {
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
+        }
 }
