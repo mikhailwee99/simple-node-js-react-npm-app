@@ -16,7 +16,7 @@ pipeline {
         }
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                sh 'ls'
+                sh 'ls /var'
                 dependencyCheck additionalArguments: ''' 
                             -o './'
                             -s './'
